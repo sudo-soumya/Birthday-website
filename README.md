@@ -1,24 +1,24 @@
-# Boyfriend Birthday Website
+# Boyfriend/Girlfriend Birthday Website
 
 This project is a simple responsive website created to celebrate your boyfriend's birthday. It features a beautiful background image and plays a special audio track automatically when the page loads.
 
 ## Project Structure
 
 ```
-boyfriend-birthday-website
-├── src
-│   ├── index.html        # Main HTML document
-│   ├── styles
-│   │   └── main.css      # CSS styles for the website
-│   ├── scripts
-│   │   └── main.js       # JavaScript for interactivity
-│   └── assets
-│       ├── audio
-│       │   └── background.mp3  # Background audio file
-│       └── photo
-│           └── background.jpg   # Background image
-├── package.json          # NPM configuration file
-└── README.md             # Project documentation
+birthday-website/
+├── .gitattributes
+├── README.md
+├── index.html
+├── assets/
+│   ├── audio/
+│   │   └── background.mp3
+│   └── images/
+│       ├── background.jpg
+│       └── icon.ico
+├── scripts/
+│   └── main.js
+└── styles/
+    └── main.css
 ```
 
 ## Features
@@ -35,4 +35,4 @@ boyfriend-birthday-website
 
 ## License
 
-This project is open-source and available for anyone to use and modify. Enjoy celebrating your boyfriend's special day!
+This project is open-source and available for anyone to use and modify. Enjoy celebrating your boyfriend/girlfriend's special day!
