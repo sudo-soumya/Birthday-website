@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Love!</title>
+    <link rel="icon" type="image/jpeg" href="assets/images/icon.ico">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 245, 250, 0.55); /* soft white-pink overlay */
+            pointer-events: none;
+            z-index: 0;
+        }
+        .open-text {
+            position: absolute;
+            top: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #5d4632;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-audio" loop>
+        <source src="assets/audio/background.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="play-btn" class="love-btn">
+        ❤️ Tap to play music ❤️
+    </button>
+    <!-- Floating hearts background -->
+    <div class="floating-hearts"></div>
+    <div class="envelope-container">
+        <div class="envelope" id="envelope">
+            <div class="envelope-flap">
+                <svg class="flap-svg" viewBox="0 0 240 60" width="100%" height="60">
+                    <!-- Flap with pointy top corners -->
+                    <polygon points="0,0 120,55 240,0" fill="#b97a57"/>
+                </svg>
+                <div class="stamp-heart">❤️</div>
+                <span class="open-text">Click to open</span>
+            </div>
+            <div class="envelope-body"></div>
+        </div>
+    </div>
+
+    <!-- Birthday Card Modal -->
+    <div class="birthday-card-modal" id="birthday-card-modal">
+        <div class="birthday-card-letter">
+            <button class="close-btn" id="close-card">&times;</button>
+            <div class="letter-lines"></div>
+            <div class="card-content">
+                <div class="card-flex">
+                    <div class="card-text">
+                       <h2>Happy Birthday, love of my life!❤️</h2>
+                       <p>Vo vo, I wanted to be the last person to wish you 😭🙈❤️</p>
+                       <p>Even if the clock says it's no longer your birthday, you’re still my favorite person on this entire Earth.🙈 You make everything better, funnier, warmer, just by being you.❤️</p>
+                       <p>And somehow, you still surprise me with how nice, weird, and irresistibly lovable you are.🫂❤️</p>
+                       <p>Happyyyyy it-was-your birthday, my baby!!❤️🫂</p>
+                       <p>❤️ I LOVE YOUUUUUUU SO MUCH ❤️</p>
+                        <small class="card-bracket">(kindly do not judge, i made it all abhi 👉👈❤️😭)</small>
+                    </div>
+                    <img src="assets/images/cutu.jpg" alt="Birthday" class="card-img">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="confetti"></div>
+    <div class="background-emojis"></div>
+    <script src="scripts/main.js"></script>
+    <script>
+const envelope = document.getElementById('envelope');
+const cardModal = document.getElementById('birthday-card-modal');
+const closeBtn = document.getElementById('close-card');
+const playBtn = document.getElementById('play-btn');
+const bgAudio = document.getElementById('bg-audio');
+
+let isPlaying = false;
+
+playBtn.onclick = function() {
+    if (!isPlaying) {
+        bgAudio.play();
+        playBtn.textContent = 'Yayyy!😋(Tap to stop music😔)';
+        isPlaying = true;
+    } else {
+        bgAudio.pause();
+        bgAudio.currentTime = 0;
+        playBtn.textContent = '❤️ Tap to play music (please) ❤️';
+        isPlaying = false;
+    }
+};
+
+// Open envelope and show card
+envelope.onclick = function() {
+    envelope.classList.add('open');
+    cardModal.classList.add('show');
+};
+
+// Close card and animate envelope flap back
+closeBtn.onclick = function() {
+    cardModal.classList.remove('show');
+    envelope.classList.remove('open');
+};
+
+// Optional: close card by clicking outside
+cardModal.onclick = function(e) {
+    if (e.target === cardModal) {
+        cardModal.classList.remove('show');
+        envelope.classList.remove('open');
+    }
+};
+
+// Remove old floating hearts, sparkles, balloons, stars generators
+
+// Add blurred floating background heart and bow emojis (including animation)
+const floatingHearts = document.querySelector('.floating-hearts');
+floatingHearts.innerHTML = ''; // Clear any existing emojis
+
+const emojiList = ['❤️','🎀'];
+for (let i = 0; i < 20; i++) {
+    const e = document.createElement('span');
+    e.className = 'heart-emoji';
+    e.textContent = emojiList[Math.floor(Math.random()*emojiList.length)];
+    e.style.left = `${Math.random()*95}%`;
+    e.style.bottom = `-50px`; // Start below viewport
+    e.style.fontSize = `${2 + Math.random()*2.5}rem`;
+    e.style.opacity = `0`; // Start invisible
+    e.style.filter = 'blur(2.5px)';
+    e.style.pointerEvents = 'none';
+    e.style.zIndex = '0';
+    e.style.animationDelay = `${Math.random()*8}s`;
+    floatingHearts.appendChild(e);
+}
+
+// Remove or comment out the sparkles, balloons, and stars JS blocks
+// Remove the corresponding <div class="floating-sparkles"></div>, <div class="floating-balloons"></div>, <div class="floating-stars"></div> from your HTML if not needed
+</script>
+</body>
+</html>
