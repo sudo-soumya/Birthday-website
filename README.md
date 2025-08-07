@@ -1,6 +1,6 @@
 # Boyfriend/Girlfriend Birthday Website
 
-This project is a simple responsive website created to celebrate your boyfriend's birthday. It features a beautiful background image and plays a special audio track automatically when the page loads.
+This project is a simple responsive website created to celebrate your boyfriend/girlfriend's birthday. It features a beautiful background image and plays a special audio track automatically when the page loads.
 
 ## Project Structure
 
